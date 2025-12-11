@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pet accessories</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            scrollbar-width: none;
+        }
+        body{
+            background-image: url(images/services/petaccessories/pet_accessoriesbg.png);
+            background-position:center;
+            background-repeat:repeat;
+            background-size:cover;
+            
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+           
+            
+        }
+        .petaccessoriestext{
+            margin-top:6%;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
+            color: #8b61c2;        
+            font-family:'PP Neue Machina Ultrabold';
+            font-size: 5vw;
+            text-wrap: nowrap;
+        }
+       .content{
+        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        display: flex;
+
+        margin-top: 80px;
+
+       }
+       .box{
+            /* display: flex; */
+            /* flex-direction: column; */
+           /* justify-content: center; */
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            min-width: 400px; 
+            min-height: 400px;
+            /* width: 300px;
+            height: 300px; */
+            border: 2px solid;
+            border-style: dashed;
+            border-radius: 80px;
+            transition: all 0.3s ease;
+       }
+       #box
+       {
+        min-width: 300px; 
+            min-height: 300px;
+       }
+       .box img{
+         width: 70%;
+        height: 70%;
+          object-fit:contain;
+       }
+       .box:hover{
+        transform: scale(1.05);
+       }
+       #box:hover{
+        cursor: pointer;
+        background-color:#8b61c27e;
+        transform: scale(1.05);
+       }
+       #box h2{
+        margin-top: 20px;
+        font-family:cursive;
+        font-size: 25px;
+        
+       }
+       .text{
+        justify-self: center;
+        text-align: center;
+        width: 90vw;
+        height: 90vh;
+        font-size: 100px;
+        align-content: center;
+        font-family: 'PP Neue Machina Ultrabold';
+        color:#8b61c2;
+        /* text-shadow: 7px 3px 20px rgba(0,0,0,0.5); */
+        
+        
+       }
+
+       .toys{
+        display: flex;
+        flex-wrap: wrap;
+         align-self: center;
+         justify-self: center;
+         justify-content: center;
+         width: 80vw;
+        height: fit-content;
+        /* overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: hidden; */
+        /* scrollbar-width: none; */
+       }
+       .toybox
+       {
+        margin: 20px 20px;
+        border: 4px solid;
+        min-width: fit-content;
+        min-height: fit-content;
+        text-align: center;
+        justify-items: center;
+        padding: 35px;
+        
+        
+       }
+       .toybox img{
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+       }
+      .toybox p{
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 15px;
+      }
+      .toybox h3{
+        color: #7934d3;
+        font-weight: bolder;
+        font-size: 20PX;
+        padding: 15px;
+
+      }
+      .toybox button{
+        cursor: pointer;
+        position: relative;
+        width: 100px;
+        height: 30px;
+        text-wrap: nowrap;
+        display: flex;
+        background-color: #f5f7f9;
+        color: #860609;
+        font-weight: bolder;
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .toybox button:hover
+      {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 10px rgba(0.1,0.1,0.1,0.1);
+      }
+      .toybox button img
+      {
+        position:absolute;
+        
+        left: 80%;
+        width: 60px;
+        height: 60px;
+      }
+       label{
+        font-size: 80px;
+        padding: 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: #8b61c2;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main_header">
+            <ul>
+                <a href="our_services.html" class="pawsome_header"><li>pawsome</li></a>
+                <a href="pet_sitting.html"><li >sitting&#11167</li></a>
+                <a href="petgrooming.html"><li>grooming&#11167</li></a>
+                <a href="pet_accessories.html"><li>accessories&#11167</li></a>
+                <a href="pet_health.html"><li>health&#11167</li></a>
+                <a href="pet_food.html"><li>food&#11167</li></a>
+                <li><button class="profile_btn" style="padding: 20px; font-size: 20px; background-color: #73351971; border-radius: 20px; border: 0; cursor: pointer;" >NO USER</button></li>
+                <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+            </ul>
+        </header>
+
+        <div id="profilePopup" class="profilepopup"
+     style="z-index: 999;
+            font-size: 20px;
+             position: fixed; 
+              left: 50%;
+               top: 8%;
+              color: black;
+               background:#f3dda4b7;
+               padding:20px; 
+              border-radius:15px; 
+              box-shadow:0 5px 20px rgba(0,0,0,0.4);
+               width:250px;
+               min-width: fit-content;">
+
+  <h3 style="color: #733519; font-weight: bold; font-size: 32px; font-family: 'PP Neue Machina Ultrabold'">User Profile</h3>
+  <p><b>Username:</b> <span id="p_username"></span></p>
+  <p><b>Email:</b> <span id="p_email"></span></p>
+  <p><b>UserID:</b> <span id="p_userid"></span></p>
+
+  <button id="logoutBtn"
+    style="cursor: pointer; background:red;color:white;padding:8px;border:none;border-radius:8px;margin-top:10px;">
+    Logout
+  </button>
+</div> 
+
+
+
+
+
+
+        <div class="petaccessoriestext">pet accessories</div>
+
+        <div class="scrollmain">
+            <div class="content" id="scroll_content">
+                <div class="box" style="border: 0px; "  >
+                    <img src="images/services/petaccessories/leftscroll_main.png" alt="">
+                </div>
+                <div class="box main_toy" id="box">
+                    <img  src="images/services/petaccessories/toys_main.png" alt="">
+                    <h2>toys</h2>
+                </div>
+                <div class="box" id="box">
+                    <img src="images/services/petaccessories/groomingtoys_main.png" alt="">
+                    <h2>grooming tools</h2>
+                </div>
+                <div class="box" id="box">
+                    <img src="images/services/petaccessories/clothing_main.png" alt="">
+                    <h2>clothing</h2>
+                </div>
+                <div class="box" id="box">
+                    <img src="images/services/petaccessories/bed_main.png" alt="">
+                    <h2>beds & mats</h2>
+                </div>
+                <div class="box" id="box">
+                    <img src="images/services/petaccessories/bowl_main.png" alt="">
+                    <h2>bowls & feeders</h2>
+                </div>
+                <div class="box" id="box">
+                    <img src="images/services/petaccessories/travel_main.png" alt="">
+                    <h2>travel supplies</h2>
+                </div>
+                <div class="box" style="border: 0px;" ><img src="images/services/petaccessories/rightscroll_main.png" alt=""></div>
+            </div>
+        </div>
+
+
+
+
+        <div class="text"> “From grooming to goodies <br>— Pawsome has it all.”</div>
+        
+        <!-- toys sectionnnn-->
+         <label for="toys" >Toys < ></label>
+      <div class="toys cartselect_section">
+        <div class="cartselect_item toybox toy1">
+            <img src="images/services/petaccessories/toys/teddybear.png" alt="">
+            <p class="cartselect_itemname toyname">teddy bear</p>
+            <h3 class="price">399</h3>
+            <button class="addtocart">add to cart <img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy2">
+            <img src="images/services/petaccessories/toys/star.png" alt="">
+            <p class="cartselect_itemname toyname">star</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy3">
+            <img src="images/services/petaccessories/toys/poppops.png" alt="">
+            <p class="cartselect_itemname toyname">pop pops</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy4">
+            <img src="images/services/petaccessories/toys/ball.png" alt="">
+            <p class="cartselect_itemname toyname">ball</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="toybox toy5">
+            <img src="images/services/petaccessories/toys/babyrattle.png" alt="">
+            <p class="toyname">baby rattle</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart_toy">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy6">
+            <img src="images/services/petaccessories/toys/softballs.png" alt="">
+            <p class="cartselect_itemname toyname">soft balls</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy7">
+            <img src="images/services/petaccessories/toys/tambourine.png" alt="">
+            <p class="cartselect_itemname toyname">tambourine</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy8">
+            <img src="images/services/petaccessories/toys/dinosaurs.png" alt="">
+            <p class="cartselect_itemname toyname">dinosaurs</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy9">
+            <img src="images/services/petaccessories/toys/duck.png" alt="">
+            <p class="cartselect_itemname toyname">duck</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy10">
+            <img src="images/services/petaccessories/toys/tugrope.png" alt="">
+            <p class="cartselect_itemname toyname">tug rope</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy11">
+            <img src="images/services/petaccessories/toys/hotdog.png" alt="">
+            <p class="cartselect_itemname toyname">hotdog</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+        <div class="cartselect_item toybox toy12">
+            <img src="images/services/petaccessories/toys/bone.png" alt="">
+            <p class="cartselect_itemname toyname">bone</p>
+            <h3 class="price">₹399</h3>
+            <button class="addtocart">add to cart<img src="images/addtocartlogo.png" alt=""></button>
+        </div>
+      </div>
+
+      <div class="scroll" style="width: 90vw;height: 90vh; ">hii</div>
+      
+       <div class="cartpop" ></div>
+
+       
+    <script>
+        leftscroll();
+        
+
+        function leftscroll()
+        {
+
+            let scroll1=document.querySelectorAll('#scroll_content')
+            scroll1.forEach((element)=>{
+
+                element.addEventListener('wheel',(e)=>{
+                e.preventDefault();
+                const scrollAmount = e.deltaY; // Use deltaY for vertical scroll amount
+                
+                element.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth' // Optional: for smooth scrolling
+                });
+            });
+        })
+    }
+
+
+
+function slowScroll() {
+    const target=document.querySelector(".toys")
+    const element = document.querySelector(".toys");
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+
+    let duration = 1500; // 👈 make this BIGGER for slower scroll
+    let start = null;
+
+    function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+
+        window.scrollTo(0, startPosition + distance * progress);
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+document.querySelector(".main_toy").addEventListener("click",()=>{ slowScroll(); })
+
+
+
+    // const main_toy=document.querySelector(".main_toy")
+    // main_toy.addEventListener("click",()=>{
+    //     document.querySelector(".toys").scrollIntoView({
+    //     behavior: "smooth",
+    //     block:"center" 
+    // });
+    //  });
+
+
+        
+
+   
+
+
+        </script>
+        <script src="header.js"></script>
+        <script src="cart.js"></script>
+        <script src="profile.js"></script>
+</body>
+</html>

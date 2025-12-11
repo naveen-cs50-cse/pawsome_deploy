@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pet sitting</title>
+
+        <link rel="stylesheet" href="main.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            /* display: flex; */
+            background-color: #ddc4a1;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            /* justify-content:center ; */
+            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
+        .petsittingtext{
+            margin-top: 3%;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
+            color: #8b61c2;        
+            font-family:'PP Neue Machina Ultrabold';
+            font-size: 5vw;
+            text-wrap: nowrap;
+        }
+        .grid{
+            
+            width: 68vw;
+            padding: px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            justify-self: center;
+        }
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            min-height: fit-content;
+            /* margin: 10px 20px; */
+            width: 420px ;
+            /* height: 300px; */
+            border: 2px solid;
+            border-radius: 30px;
+            border-style: dashed;
+            background-color: #f1cd9a6f;
+            transition: all 0.3s ease;
+            
+        }
+        .box:hover{
+            box-shadow: 10px 2px 10px rgba(0, 0,0,0.2);
+            cursor: pointer;
+            transform: scale(1.05);
+            background-color:#e7ac5a9e;
+        }
+        .box img{
+            width: 50%;
+        }
+        .content{
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        ul{
+            list-style: none;
+        }
+
+        li p{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+             font-size: 25px;
+             font-weight: bold;
+        }
+        li{
+            text-align: left;
+            padding: 4px;
+        }
+        .booknowtext{
+            color: #8b61c2;
+            font-family:"PP Neue Machina Ultrabold" ;
+            font-size: 32px;
+            bottom: 0;
+            padding: 10px;
+           }
+
+        .popup_booking{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* margin-left: 50px; */
+            text-align: center;
+            position: fixed;
+            z-index:999;
+            min-width: fit-content;
+            min-height: fit-content;
+            width: 70%;
+            height: 100%;
+            background-image:url(images/services/petsitting/popup_booking.png) ;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            bottom: -1000px;
+            /* bottom: 0; */
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+            /* position: relative; */
+            /* align-content: center;
+            justify-items: center; */
+
+                   
+        }
+        #show{
+            bottom: 0;
+        }
+        .form_content{
+         
+            text-align: center;
+         
+            margin-top: 25%;
+        }
+       .sitting_service_type{
+        
+        font-family: 'PP Neue Machina Ultrabold';
+        font-size: 43px;
+        color: #733519;
+        padding: 20px;
+       }
+       #input_address{
+        padding: 10px;
+        width: 350px;
+        height: 80px;
+        min-height: fit-content;
+        field-sizing: content;
+        font-size: 20px;
+
+        
+       }
+       .input_addr label{
+        font-size: 30px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         color: #000000;
+       }
+        .sitter_address{
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid;
+            width: 350px;
+        }
+        .sitter_address span{
+            font-weight:bolder;
+        }
+        #datetime_sitting{
+            width: 350px;
+            height: 50px;
+            font-size: 30px;
+            background-color:#8e838390 ;
+        }
+        .message{
+            padding: 20px;
+            justify-items: center;
+            display: none;
+            width: 400px;
+            height: 80px;
+            font-size: 25px;
+            background-color: rgba(38, 189, 38, 0.992);
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99999999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+         <div class="message"></div>
+        <div class="popup_booking">
+            <div class="form_content">
+
+                <form id="sitting_form">
+                    <div class="sitting_service_type"></div>
+                    
+                    <div class="input_addr">
+                        
+                        <label for="input_address">Enter your address</label><br>
+                        <textarea placeholder="Hno - street - city - pincode" name="" id="input_address"></textarea>
+                    </div>
+                    <div class="sitter_address"><span>Sitter Address : </span> JUSTDOGS Ground floor, 1299C, Rd Number 68, Jubilee Hills, Hyderabad, Telangana 500033</div>
+                    <input id="datetime_sitting" type="datetime-local">
+                    
+                </form>
+                <button  id="sitting_submit" type="submit" style="margin: 10px; padding: 10px 20px; font-size: 20px;">Submit</button>
+            </div>
+
+        </div>
+
+        <header class="main_header">
+            <ul>
+                <a href="our_services.html" class="pawsome_header"><li>pawsome</li></a>
+                <a href="pet_sitting.html"><li >sitting&#11167</li></a>
+                <a href="petgrooming.html"><li>grooming&#11167</li></a>
+                <a href="pet_accessories.html"><li>accessories&#11167</li></a>
+                <a href="pet_health.html"><li>health&#11167</li></a>
+                <a href="pet_food.html"><li>food&#11167</li></a>
+                <!-- <li><button class="login_btn_header">login</button></li> -->
+                <li><button class="profile_btn" style="padding: 20px; font-size: 20px; background-color: #73351971; border-radius: 20px; border: 0; cursor: pointer;" >NO USER</button></li>
+                <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+            </ul>
+        </header>
+  <div id="profilePopup" class="profilepopup"
+     style="z-index: 999;
+            font-size: 20px;
+             position: fixed; 
+              left: 50%;
+               top: 8%;
+              color: black;
+               background:#f3dda4b7;
+               padding:20px; 
+              border-radius:15px; 
+              box-shadow:0 5px 20px rgba(0,0,0,0.4);
+               width:250px;
+               min-width: fit-content;">
+
+  <h3 style="color: #733519; font-weight: bold; font-size: 32px; font-family: 'PP Neue Machina Ultrabold'">User Profile</h3>
+  <p><b>Username:</b> <span id="p_username"></span></p>
+  <p><b>Email:</b> <span id="p_email"></span></p>
+  <p><b>UserID:</b> <span id="p_userid"></span></p>
+
+  <button id="logoutBtn"
+    style="cursor: pointer; background:red;color:white;padding:8px;border:none;border-radius:8px;margin-top:10px;">
+    Logout
+  </button>
+</div> 
+
+            <div class="petsittingtext">pet sitting services</div>
+           <div class="grid">
+
+                  <div class="box homevisit">
+                    <div class="content">
+                    <img src="images/services/petsitting/homevisit.png" alt="">
+                    <ul>
+                        <li><p  class="sitting_service">daily home visits</p></li>
+                        <li>•feeding</li>
+                        <li>•area cleaning</li>
+                        <li>•photo/video updates</li>
+                    </ul>
+
+                    </div>
+                  <h2 class="booknowtext">book now</h2> 
+               </div>
+               <div class="box petwalking">
+                <div class="content">
+                    <img src="images/services/petsitting/petwalking.png" alt="">
+                    <ul>
+                        <li><p class="sitting_service">Pet Walking</p></li>
+                        <li>•feeding</li>
+                        <li>•area cleaning</li>
+                        <li>•photo/video updates</li>
+                    </ul>
+
+                    </div>
+                  <h2 class="booknowtext">book now</h2> 
+               </div>
+               <div class="box overnight">
+                <div class="content">
+                    <img src="images/services/petsitting/overnightstay.png" alt="">
+                    <ul>
+                        <li><p class="sitting_service">Overnight sitting</p></li>
+                        <li>•feeding</li>
+                        <li>•area cleaning</li>
+                        <li>•photo/video updates</li>
+                    </ul>
+
+                    </div>
+                  <h2 class="booknowtext">book now</h2> 
+               </div>
+               <div class="box boarding">
+                <div class="content">
+                    <img src="images/services/petsitting/petboarding.png" alt="">
+                    <ul>
+                        <li><p class="sitting_service">Pet Boarding</p></li>
+                        <li>•feeding</li>
+                        <li>•area cleaning</li>
+                        <li>•photo/video updates</li>
+                    </ul>
+
+                    </div>
+                  <h2 class="booknowtext">book now</h2> 
+               </div>
+            </div>
+
+            
+    <div class="cartpop"></div>
+    </div>
+   <script>
+   // ---------- Strict future-or-now datetime for #datetime_sitting ----------
+const datetimeInput = document.getElementById("datetime_sitting");
+if (!datetimeInput) {
+  console.warn("datetime_sitting input not found");
+} else {
+  // return a local YYYY-MM-DDTHH:MM string for a Date object
+  function toLocalDatetimeString(d) {
+    const local = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+    return local.toISOString().slice(0,16); // "YYYY-MM-DDTHH:MM"
+  }
+
+  // set min to "now" (local) — call whenever we want to refresh min
+  function refreshMinToNow() {
+    const now = new Date();
+    datetimeInput.min = toLocalDatetimeString(now);
+  }
+
+  // if current value is older than min, snap it to min
+  function enforceNotPast() {
+    if (!datetimeInput.value) return;
+    // compare strings works because format is ISO-like "YYYY-MM-DDTHH:MM"
+    if (datetimeInput.value < datetimeInput.min) {
+      // replace with min (so user sees allowed value)
+      datetimeInput.value = datetimeInput.min;
+    }
+  }
+
+  // initial set
+  refreshMinToNow();
+
+  // update min when user opens / interacts with the picker
+  datetimeInput.addEventListener("focus", () => {
+    refreshMinToNow();
+    // small delay to ensure min is set before the native picker opens
+    setTimeout(() => enforceNotPast(), 50);
+  });
+  datetimeInput.addEventListener("click", () => {
+    refreshMinToNow();
+    setTimeout(() => enforceNotPast(), 50);
+  });
+
+  // update min periodically while the page is open (keeps min in sync as minutes pass)
+  const refreshInterval = 30 * 1000; // 30 seconds
+  const intervalId = setInterval(refreshMinToNow, refreshInterval);
+
+  // enforce as user types/pastes
+  datetimeInput.addEventListener("input", enforceNotPast);
+
+  // final safety check before form submit or booking send:
+  // (Assumes you call sitting_booking() on submit; below we patch that check)
+  async function validateDatetimeBeforeSubmit() {
+    refreshMinToNow();      // ensure min is current
+    enforceNotPast();       // correct value if needed
+    if (!datetimeInput.value) {
+      return { ok: false, msg: "Please select date & time." };
+    }
+    if (datetimeInput.value < datetimeInput.min) {
+      return { ok: false, msg: "Selected time is in the past. Choose present or future time." };
+    }
+    return { ok: true, msg: "" };
+  }
+
+  // Example: integrate with your existing booking function
+  // Modify sitting_booking() to call validateDatetimeBeforeSubmit() before sending:
+  // (If sitting_booking is in another file, just call validateDatetimeBeforeSubmit() there.)
+  window.validateDatetimeBeforeSubmit = validateDatetimeBeforeSubmit;
+
+  // Optional: clean up interval on page unload
+  window.addEventListener("beforeunload", () => clearInterval(intervalId));
+}
+
+</script>
+
+    <script type="module" src="pet_sitting.js"></script>
+    <script>
+        let service='';
+        let popupservicename=document.querySelector(".sitting_service_type")
+       pop();
+async function pop() {
+
+    let box = document.querySelectorAll(".box");
+    let popup = document.querySelector(".popup_booking");
+    let grid = document.querySelector(".grid");
+    let text=document.querySelector(".petsittingtext");
+
+   box.forEach((boxes)=>{
+
+       boxes.addEventListener("click", (e) => {
+           e.stopPropagation(); // prevents container click
+          
+           service = boxes.querySelector(".sitting_service").innerText;
+            console.log("Selected service:", service);
+
+            //sets service
+            popupservicename.innerText=service;
+
+           text.style.filter='blur(10px)';
+           popup.id = "show";
+           grid.style.filter = 'blur(10px)';
+           
+        });
+        
+    })
+    document.querySelector(".container").addEventListener("click", (e) => {
+        // If click is NOT inside popup AND NOT on the box → close
+        if (!e.target.closest(".popup_booking") && !e.target.closest(".box") ) {
+            popup.id = "";
+            grid.style.filter = "";
+           text.style.filter='blur(0px)';
+        }
+    });
+}
+
+
+
+
+
+    </script>
+    <script src="header.js"></script>
+    <script src="cart.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

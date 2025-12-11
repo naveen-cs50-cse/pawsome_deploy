@@ -1,0 +1,75 @@
+const API_URL = 'http://127.0.0.1:5001/api/auth';
+
+
+async function bookingemail() {
+
+    const servicename=document.querySelector(".servicename").innerText;
+    const address=document.getElementById("address").value;
+    const datetime=document.getElementById("datetime").value;
+    const msg=document.querySelector(".message");
+    
+    if(!address || !datetime)
+     {
+         
+         msg.id="message";
+         msg.innerText="enter address or 'NONE' "
+         
+
+         setTimeout(() => {
+             msg.id="";
+             msg.innerText="";
+         }, 2000);
+         return;
+     
+    }
+    // const dropaddr=document.querySelector(".store_addresss").innerText;
+
+     const userRes = await fetch("http://127.0.0.1:5001/api/auth/me", {
+            credentials: "include"   });
+
+     let useremail = "";
+     if (userRes.ok) {
+         const data = await userRes.json();
+         useremail = data.user.email;
+     }
+
+     
+
+                try{
+                    const res =await fetch(`${API_URL}/emailsitting`,{
+                           method:'POST',
+                           headers:{'Content-Type':'application/json'},
+                           credentials:'include',
+                           body:JSON.stringify({useremail,servicename,address,datetime})
+                    })
+                    const data=await res.json();
+
+                    if(res.ok)
+                    {
+                        console.log(data);
+                        console.log("email sent for pet grooming")
+
+                        msg.id="message";
+                        msg.innerText="booking confirmed and will be emailed";
+                        setTimeout(() => {
+                                msg.id="";
+                                msg.innerText="";
+                            }, 2000);   
+
+                    }
+                    else{
+                        console.log("email not sent");
+                    }
+
+                }catch(err){
+                    console.log("email error")
+                    console.log(err);
+                }
+
+    
+}
+
+
+document.querySelector(".submitbtn").addEventListener("click",()=>{
+    bookingemail();
+})

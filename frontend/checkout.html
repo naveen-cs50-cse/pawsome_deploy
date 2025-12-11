@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        body {
+            background:#ddc4a1;
+            font-family: Arial;
+        }
+
+        .checkout-container{
+            margin: 120px auto;
+            width: 60%;
+            padding: 20px;
+            background: #fff4d1;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .checkout-container h1{
+            text-align:center;
+            color:#733519;
+            font-size:40px;
+            margin-bottom:20px;
+        }
+
+        .item{
+            display:flex;
+            justify-content:space-between;
+            padding:10px;
+            background:#f5deb3;
+            border-radius:10px;
+            margin:10px 0;
+        }
+
+        .paybtn{
+            width:100%;
+            padding:15px;
+            margin-top:20px;
+            background:#8b61c2;
+            border:none;
+            border-radius:10px;
+            color:white;
+            font-size:25px;
+            cursor:pointer;
+        }
+        .paybtn:hover{
+            background:#6b3fa5;
+        }
+
+         .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #8b61c2;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+        .popup {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px; padding: 20px;
+            background: white; border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            display: none;
+            text-align: center;
+        }
+        #success {
+            display: none;
+            margin-top: 40px;
+            font-size: 30px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container"></div>
+<header class="main_header">
+    <ul>
+        <a href="our_services.html" class="pawsome_header"><li>pawsome</li></a>
+        <a href="pet_sitting.html"><li >sitting</li></a>
+        <a href="petgrooming.html"><li>grooming</li></a>
+        <a href="pet_accessories.html"><li>accessories</li></a>
+        <a href="pet_health.html"><li>health</li></a>
+        <a href="pet_food.html"><li>food</li></a>
+
+        <li><button class="profile_btn"
+        style="padding:20px;font-size:20px;background-color:#73351971;border-radius:20px;border:0;cursor:pointer;">NO USER</button></li>
+
+        <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+    </ul>
+</header>
+
+<div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div id="checkout-items"></div>
+
+    <h2 style="text-align:right; padding:10px;">Total: ₹<span id="totalPrice">0</span></h2>
+
+    <button class="paybtn" >Place Order</button>
+</div>
+
+<div class="popup" id="paymentBox">
+    <h2>Choose Payment Method</h2>
+    
+    <button class="btn" style="background:#28a745" onclick="fakePay()">UPI</button><br><br>
+    <button class="btn" style="background:#007bff" onclick="fakePay()">Credit / Debit Card</button><br><br>
+    <button class="btn" style="background:#ff9800" onclick="fakePay()">Netbanking</button>
+</div>
+
+<div id="success">Payment Successful! 🎉</div>
+
+<script>
+document.querySelector(".paybtn").addEventListener("click",()=>{
+
+    document.getElementById("paymentBox").style.display = "block";
+})
+
+
+function fakePay() {
+    document.getElementById("paymentBox").style.display = "none";
+    document.getElementById("success").style.display = "block";
+
+    // clear cart on backend
+    fetch("http://127.0.0.1:5001/api/cart/clear", {
+        method: "DELETE",
+        credentials: "include"
+    });
+
+    setTimeout(() => {
+        window.location.href = "our_services.html";
+    }, 2000);
+}
+</script>
+
+<script src="header.js"></script>
+<script src="profile.js"></script>
+
+<script>
+const API_BASE = "http://127.0.0.1:5001/api";
+
+// Load cart items
+async function loadCheckout() {
+    const res = await fetch(API_BASE + "/cart", { credentials: "include" });
+    const data = await res.json();
+
+    let container = document.getElementById("checkout-items");
+    let total = 0;
+
+    container.innerHTML = "";
+
+    data.items.forEach(item => {
+        total += item.pprice * item.pqty;
+
+        container.innerHTML += `
+            <div class="item">
+                <div>
+                    <b>${item.pname}</b> <br>
+                    Qty: ${item.pqty}
+                </div>
+                <div>₹${item.pprice * item.pqty}</div>
+            </div>
+        `;
+    });
+
+
+    document.getElementById("totalPrice").innerText = total;
+}
+
+loadCheckout();
+
+// document.querySelector(".paybtn").addEventListener("click",()=>{
+
+//     async function placeOrder() {
+//         // 1. Get the cart first
+//         const res = await fetch(API_BASE + "/cart", { credentials: "include" });
+//     const data = await res.json();
+
+//     let items = data.items;
+    
+//     // 2. Extract names & price
+//     let itemList = items.map(i => `${i.pname} (x${i.pqty}) — ₹${i.pprice * i.pqty}`).join("\n");
+    
+//     let total = items.reduce((t, i) => t + (i.pprice * i.pqty), 0);
+
+//     // 3. Get user email
+//     const userRes = await fetch(API_BASE + "/auth/me", { credentials: "include" });
+//     const userData = await userRes.json();
+//     let useremail = userData.user.email;
+    
+//     // 4. Send Email
+//     await fetch(API_BASE + "/auth/checkoutEmail", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         credentials: "include",
+//         body: JSON.stringify({ useremail, itemList, total })
+//     });
+    
+//     // 5. Clear Cart
+//     await fetch(API_BASE + "/cart/clear", {
+//         method: "DELETE",
+//         credentials: "include"
+//     });
+    
+//     alert("Order Placed & Email Sent!");
+//     window.location.href = "our_services.html";
+// }
+
+// })
+</script>
+<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="checkoutpay.js"></script> -->
+</body>
+</html>

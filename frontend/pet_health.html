@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pet_health</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            /* background-color: #ddc4a1; */
+            scrollbar-width: none;
+        }
+        .container
+        {
+            width: 100vw;
+            height: 100vh;
+            align-content: center;
+            background-color: #ddc4a1;
+
+        }
+        .pethealthtext{
+            margin: -3% 40% 2% 0;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
+            color: #8b61c2;        
+            font-family:'PP Neue Machina Ultrabold';
+            font-size: 5vw;
+            text-wrap: nowrap;
+        }
+        .health_content{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        
+        }
+        .healthbox{
+            margin: 20px;
+            width: 320px;
+            height: 300px;
+            min-height: fit-content;
+            border: 5px solid;
+            padding: 20px;  
+            margin: 0px 50px;
+            transition: all 0.3s ease;
+        }
+        .healthbox:hover{
+            cursor: pointer;
+            background-color: #c9a26be2;
+            transform: scale(1.05);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+
+        }
+        .healthbox img{
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .healthbox h2{
+            font-size: 40px;
+            color: #733519;
+            padding: 20px;
+        }
+        ul li{
+            padding: 5px;
+            list-style: none;
+        }
+        .healthbox h1{
+            color: #8b61c2;
+            font-family: 'PP Neue Machina Ultrabold';
+            padding: 10px;
+            font-size: 40px;
+            font-weight: 900;
+            
+        }
+        .dogcathug{
+            position: fixed;
+            width: 25%;
+            height: 25%;
+            object-fit: contain;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        /* popup */
+        .popup_booking{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            /* z-index:999; */
+            min-width: fit-content;
+            min-height: fit-content;
+            width: 64%;
+            height: 90%;
+            background-image:url(images/services/petsitting/popup_booking.png) ;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            bottom: -1000px;
+            /* bottom: 0; */
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+            /* position: relative; */
+            /* align-content: center;
+            justify-items: center; */
+
+                   
+        }
+        #show{
+            bottom: 0;
+        }
+        .healthservicename{
+                color: #733519;
+                font-size: 50px;
+                font-weight: bold;
+        }
+        form{
+        margin-top: 20%;
+           text-align: center;
+        }
+         input{
+            width: 210px;
+            height: 50px;
+            margin: 15px;
+            font-size: 20px;
+            background-color: #ddc4a1ae;
+         }
+         .hosp_doctors{
+            display: flex;
+            justify-content: center;
+         }
+        .hosp_doctors select{
+            background-color: #fbe7be;
+            color: #733519;
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            padding: 5px;
+           margin: 20px 20px;
+        }
+        .health_book{
+               padding: 20px 30px;
+                background-color:#dba354c2;
+                font-size: 20px;
+                border-radius: 20px;
+                margin: 10px;
+        }
+
+
+        .bookingmessage{
+            text-align: center;
+             transition: all 0.3s ease;
+             width: 450px;
+             height: fit-content;
+              position: fixed;
+              padding: 30px;
+              background-color:#77d075f5;
+              font-size: 30px;
+              color: #000000;
+              top: -1000px;
+              left: 50%;
+              transform: translateX(-50%);
+              font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #bookingmessage_show{
+            top: 10%;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <header class="main_header">
+            <ul>
+                <a href="our_services.html" class="pawsome_header"><li>pawsome</li></a>
+                <a href="pet_sitting.html"><li >sitting&#11167</li></a>
+                <a href="petgrooming.html"><li>grooming&#11167</li></a>
+                <a href="pet_accessories.html"><li>accessories&#11167</li></a>
+                <a href="pet_health.html"><li>health&#11167</li></a>
+                <a href="pet_food.html"><li>food&#11167</li></a>
+                <!-- <li><button class="login_btn_header">login</button></li> -->
+                <li><button class="profile_btn" style="padding: 20px; font-size: 20px; background-color: #73351971; border-radius: 20px; border: 0; cursor: pointer;" >NO USER</button></li>
+                <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+            </ul>
+        </header>
+  <div id="profilePopup" class="profilepopup"
+     style="z-index: 999;
+            font-size: 20px;
+             position: fixed; 
+              left: 50%;
+               top: 8%;
+              color: black;
+               background:#f3dda4b7;
+               padding:20px; 
+              border-radius:15px; 
+              box-shadow:0 5px 20px rgba(0,0,0,0.4);
+               width:250px;
+               min-width: fit-content;">
+
+  <h3 style="color: #733519; font-weight: bold; font-size: 32px; font-family: 'PP Neue Machina Ultrabold'">User Profile</h3>
+  <p><b>Username:</b> <span id="p_username"></span></p>
+  <p><b>Email:</b> <span id="p_email"></span></p>
+  <p><b>UserID:</b> <span id="p_userid"></span></p>
+
+  <button id="logoutBtn"
+    style="cursor: pointer; background:red;color:white;padding:8px;border:none;border-radius:8px;margin-top:10px;">
+    Logout
+  </button>
+</div> 
+
+
+
+        <div class="pethealthtext">pet health services</div>
+        <div class="health_content">
+            <div  class="healthbox">
+                <img src="images/services/pethealth/injection.png" alt="">
+                <h2 id="service">vaccination</h2>
+                <ul>
+                    <li>ANNUAL VACCINATION</li>
+                    <li>PUPPY AND KITTEN VACCINATION</li>
+                </ul>
+                <h1>BOOK NOW</h1>
+            </div>
+            <div class="healthbox">
+                <img src="images/services/pethealth/plus_hospital.png" alt="">
+                <h2 id="service">consultation</h2>
+                <ul>
+                    <li>FULL HEALTH CHECK-UPS</li>
+                    <li>DIAGNOSIS FOR TREATEMENTs</li>
+                </ul>
+                <h1>BOOK NOW</h1>
+            </div>
+
+        </div>
+        <div class="popup_booking">
+                <form id="bform">
+                    <div class="healthservicename"></div>
+                    <div class="hosp_doctors">
+                          
+                          <select name="" class="hospital" id="hospital">
+                            <option value="">select hospital </option>
+                               <option value="lb">LB nagar</option>
+                               <option value="uppal">UPPAL</option>
+                               <option value="jubliee">JUBLIEE HILLS </option>
+                               <option value="hitechcity">HITEC City</option>
+                          </select>
+
+                          <select name="" class="doctor">
+                            <option value="">select doctor</option>
+                            <option value="manju">DR. Manju (Dermatology) </option>
+                            <option value="naveen">DR. naveen (Veterinarian)</option>
+                            <option value="sri">DR. SRI (Emergency and Critical Care)</option>
+                          </select>
+                    </div>
+                    <input class="date" type="date"> 
+                    <input type="time" class="time">
+                </form>
+                <button type="reset" class="health_book">BOOK</button>
+            </div>
+        
+        <img class="dogcathug" src="images/services/pethealth/dogcathug.png" alt="">
+
+
+        <div class="bookingmessage" >
+            <div class="hospitalbooked"></div>
+            <div class="doctorbooked"></div>
+            <div class="datebooked"></div>
+            <div class="timebooked"></div>
+        </div>
+
+
+
+        <div class="cartpop"></div>
+    </div>
+
+    <script>
+        // ====== enforce present-or-future on .date and .time ======
+(function () {
+  const dateInput = document.querySelector(".date");
+  const timeInput = document.querySelector(".time");
+  if (!dateInput || !timeInput) {
+    console.warn("pet health date/time inputs not found");
+    return;
+  }
+
+  // helper: returns "HH:MM" with leading zeros
+  function hhmmFromDate(d) {
+    const h = String(d.getHours()).padStart(2, "0");
+    const m = String(d.getMinutes()).padStart(2, "0");
+    return `${h}:${m}`;
+  }
+
+  // set date.min to today (YYYY-MM-DD)
+  function setDateMinToToday() {
+    const now = new Date();
+    // get local date ISO part
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, "0");
+    const dd = String(now.getDate()).padStart(2, "0");
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+  }
+
+  // update time.min when selected date === today, otherwise clear time.min
+  function refreshTimeMinForSelectedDate() {
+    const selectedDate = dateInput.value; // "" or "YYYY-MM-DD"
+    if (!selectedDate) {
+      timeInput.min = "";
+      return;
+    }
+
+    const now = new Date();
+    const todayISO = now.toISOString().slice(0, 10);
+
+    if (selectedDate === todayISO) {
+      // set time minimum to current time (HH:MM)
+      // If seconds passed, we keep current minute (no seconds in time input)
+      timeInput.min = hhmmFromDate(now);
+      // if current time is later than selected time, snap to min
+      if (timeInput.value && timeInput.value < timeInput.min) {
+        timeInput.value = timeInput.min;
+      }
+    } else {
+      // future date -> no min (allow any time)
+      timeInput.min = "";
+    }
+  }
+
+  // enforce inputs live when user types/pastes
+  function enforceLive() {
+    setDateMinToToday();
+    refreshTimeMinForSelectedDate();
+
+    // snap if date selected is today but time is earlier
+    if (dateInput.value) {
+      const nowISODate = new Date().toISOString().slice(0, 10);
+      if (dateInput.value === nowISODate && timeInput.value && timeInput.value < timeInput.min) {
+        timeInput.value = timeInput.min;
+      }
+    }
+  }
+
+  // initialize
+  setDateMinToToday();
+  refreshTimeMinForSelectedDate();
+
+  // update date.min at midnight rollover while page is open:
+  // schedule next midnight to re-run setDateMinToToday (keeps min accurate across days)
+  function scheduleMidnightRefresh() {
+    const now = new Date();
+    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const msToMidnight = tomorrow - now;
+    setTimeout(() => {
+      setDateMinToToday();
+      refreshTimeMinForSelectedDate();
+      scheduleMidnightRefresh();
+    }, msToMidnight + 1000); // +1s safety
+  }
+  scheduleMidnightRefresh();
+
+  // event listeners
+  dateInput.addEventListener("change", refreshTimeMinForSelectedDate);
+  dateInput.addEventListener("input", refreshTimeMinForSelectedDate);
+  timeInput.addEventListener("input", () => {
+    // ensure time meets min if applicable
+    if (timeInput.min && timeInput.value && timeInput.value < timeInput.min) {
+      timeInput.value = timeInput.min;
+    }
+  });
+
+  // Expose a validator for final check before booking
+  window.validatePetHealthDatetime = function validatePetHealthDatetime() {
+    // refresh before validating
+    setDateMinToToday();
+    refreshTimeMinForSelectedDate();
+
+    if (!dateInput.value) {
+      return { ok: false, msg: "Please select a date." };
+    }
+    if (!timeInput.value) {
+      return { ok: false, msg: "Please select a time." };
+    }
+
+    // combine date + time into comparable string: "YYYY-MM-DDTHH:MM"
+    const chosen = `${dateInput.value}T${timeInput.value}`;
+    // compute minimal allowed datetime:
+    const now = new Date();
+    const nowISO = now.toISOString().slice(0,16); // "YYYY-MM-DDTHH:MM"
+
+    // If chosen < now, it's in the past
+    if (chosen < nowISO) {
+      return { ok: false, msg: "Selected date/time is in the past. Choose present or future time." };
+    }
+    return { ok: true, msg: "" };
+  };
+
+})();
+
+    </script>
+
+<script>
+setupDateTimeLimit("date", "time");
+</script>
+
+    <script>
+    let box = document.querySelectorAll(".healthbox");
+    let popup = document.querySelector(".popup_booking");
+ 
+
+    let grid = document.querySelector(".health_content");
+    let text=document.querySelector(".pethealthtext");
+    
+         pop();
+async function pop() {
+   
+
+   box.forEach((boxes)=>{
+
+       boxes.addEventListener("click", (e) => {
+           e.stopPropagation(); // prevents container click
+
+           const servicedisplay=document.querySelector(".healthservicename");
+          let service= boxes.querySelector("#service").innerText;
+          servicedisplay.innerText=service;
+          
+           text.style.filter='blur(10px)';
+           popup.id = "show";
+           grid.style.filter = 'blur(10px)';
+
+           
+        });
+        
+    })
+    
+        
+    document.querySelector(".container").addEventListener("click", (e) => {
+        // If click is NOT inside popup AND NOT on the box → close
+        if (!e.target.closest(".popup_booking") && !e.target.closest(".box") ) {
+            popup.id = "";
+            grid.style.filter = "";
+           text.style.filter='blur(0px)';
+        }
+    });
+
+
+}
+
+    </script>
+    <script src="pet_health.js"></script>
+    <script src="header.js"></script>
+    <script src="profile.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

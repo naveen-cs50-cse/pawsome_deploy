@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOG OR CAT</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            overflow: hidden;
+            /* display: flex; */
+            width: 100vw;
+            height: 100vh;
+            background-image: url(images/dog_cat.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+        }
+        .content{
+            display: flex;
+            justify-self: center;
+            
+        }
+        .box{
+            margin: 0px 20px;
+            width: 25vw;
+            height: 60vh;
+            border: 2px solid;
+            border-style: dashed;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            
+
+        }
+        .box:hover{
+            transform: scale(1.05);
+            background-color: #f3dca4;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 1);
+        }
+        .box img{
+            box-shadow: rgba(10, 10, 10, 1);
+            width: 80%;
+        }
+        .box button{
+            cursor: pointer;
+            justify-self: center;
+            background-color: #ddc4a1;
+            border-radius: 20px;
+            width: 150px;
+            padding: 25px 40px;
+            margin-top: 20px;
+        }
+        .text{
+            font-size: 80px;
+            padding: 5px;
+            color: #733519;
+        }
+        .text1{
+            font-family:'PAGKAKI';
+
+        }
+        .text2{
+            font-family: 'PAGKAKI';
+            margin-left: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text text1">trust us with</div>
+        <div class="content">
+            <div class="box dog">
+                <img src="images/dog.png" alt="">
+                <button onclick="selectpet('dog')">for dog</button>
+            </div>
+            <div class="box cat">
+                <img src="images/cat.png" alt="">
+                <button onclick="selectpet('cat')">for cat</button>
+
+            </div>
+        </div>
+        <div class="text text2">the paws you love</div>
+    </div>
+    <script>
+            
+            function selectpet(type)
+            {
+                  document.cookie=type;
+                  window.location.href="our_services.html"
+            }
+    </script>
+</body>
+</html>

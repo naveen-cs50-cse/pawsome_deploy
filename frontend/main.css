@@ -1,0 +1,222 @@
+
+ .main_header{
+         
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* font for header */
+           font-size: larger;           
+            padding: 10px ;
+            left: 0vw;
+            top: 0vw;
+            display: flex;
+            position: fixed;
+            width: 95%;
+        }
+        .main_header ul{
+            list-style: none;
+            display: flex;
+        }
+        .main_header ul li{
+            padding: 10px 20px;
+        }
+        .pawsome_header{
+            position: relative;
+            top: -9px;
+            text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
+            color: #8b61c2;        
+            font-family:'PP Neue Machina Ultrabold';
+            font-size: 4vh;
+            
+        }
+        .main_header a{
+            text-decoration: none;    
+        }
+        .cart-icon{
+            position: absolute;
+            right: 0;
+            font-size: 30px;
+             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);  
+             padding: 5px;
+             }
+
+
+
+             .overlay{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        
+          }
+          .loginbox.show{
+            bottom: 0;
+        
+          }
+          .loginbox{
+           
+           bottom: -500px;
+           width: 60vw;
+           height: 90vh;        
+           background-image: url(images/services/popup.png);
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size:cover ;
+           position: fixed;
+           margin-top: 63px;
+           left: 50%;
+           transform: translateX(-50%);
+
+           transition: bottom 0.4s ease;
+          }
+          .loginbox .enter{
+             position: absolute;
+             bottom: 25%;
+             left: 10%;
+            padding: 15px 20px 15px 50px;
+            border-radius: 20px;
+            border-width: 0;
+        
+          }
+          .loginbtn{
+            padding: 11px 30px;
+            position: absolute;
+            bottom: 18%;
+            left: 17%;
+            border-radius: 20px;
+            border-style: none;
+            background-color: #ddc4a1;
+            cursor: pointer;
+          }
+          .crossbtn{
+            position: absolute;
+            bottom: 46%;
+            right: 3%;
+            cursor: pointer;
+          }
+          .login_btn_header{
+            background-color: #8b61c2;
+            color: whitesmoke;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            transition: all 0.3s ease;
+          
+          }
+          .login_btn_header:hover{
+            background-color: black;
+            transform: scale(1.1);
+
+          }
+
+
+
+
+
+              .cart-icon{
+            cursor: pointer;
+          }
+          .cartpop{
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width:25%;
+            height: 100%;
+            background-color:#b98c4c ;
+            /* background-image: url(images/cartbg.png); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            
+            box-shadow  : -4px 0px 10px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            overflow-y:auto;
+            scrollbar-width: none;
+            align-items: center;
+            transition: right 0.3s ease;   
+        }
+
+        #cart{
+            right: 0;
+            
+        }
+          .cartpop .show{
+            right: 0;
+          }
+          .cartpop .cartitems{
+            padding: 10px;
+            min-height: fit-content;
+            width: 100%;
+            height: 10%;
+            align-items: center;
+            
+            display: flex;
+            justify-content:space-around;
+          }
+          .cartpop .cartitems:nth-child(even){
+            background-color: #d3bfa2;
+          }
+        .cartpop .cartitems:nth-child(2){
+            margin-top: 40px;
+          }
+          .cartdiscart{
+            cursor: pointer;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            border-radius: 20px;
+            padding: 10px 20px;
+            background-color: rgba(231, 50, 50, 0.604);
+          }
+          .cartpop img{
+            width: 60px;
+            height: 80PX;
+            object-fit: contain;
+          }
+          .cartpop .cart{
+            font-size: 30px;
+            align-items: center;
+            position: fixed;
+            height: auto;
+            background-color: #8b61c2; 
+            width: 25%;
+             text-align: center; 
+             color:  rgba(245, 245, 245, 0.593);
+             display: flex;
+            justify-content: space-around;
+            font-family:'PP Neue Machina Ultrabold';
+            color: white;
+            font-size: large;
+          }
+          
+          .cartpop span{
+           border: 2px solid;
+           padding: 5px;
+           margin: 5px;
+           border-radius: 20px;
+           font-family: Verdana, Geneva, Tahoma, sans-serif;
+            cursor: pointer;
+          }
+          .cartitemname{
+            border: 1px solid;
+            padding: 5px;
+            background-color: rgba(240, 255, 255, 0.11);
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+          }
+          .cartitemprice{
+            font-size: 20px;
+          }
+          .cartitems{
+            justify-content: space-between;
+            display: flex;
+          }
+          .profilepopup{
+
+            display: none;
+          }
+          #profilepopup{
+            display: block;
+          }

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME PAGE</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      .blackimg {
+        opacity: 40%;
+        width: 100%;
+        height: 100%;
+      }
+      .backgroundimg {
+        inset: 0;
+        position: absolute;
+        background-image: url(images/index_page/pet.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100%;
+        filter: blur(3px);
+      }
+      .content {
+        position: absolute;
+        display: grid;
+        grid-template-areas:
+          ". logo ."
+          " text1 pawimg text2"
+          ". enter .";
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto auto;
+        place-items: center;
+        margin: 0vw 0vw 8vw 7vw;
+      }
+      .content h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-size: 14vw;
+        font-weight: 904;
+        color: #8b61c2;
+        font-family: "PP Neue Machina Ultrabold";
+        align-self: center;
+        justify-self: center;
+        word-spacing: 5vw;
+      }
+      .paw {
+        grid-area: text1;
+      }
+      .some {
+        grid-area: text2;
+      }
+      .pawimg {
+        width: 17vw;
+        grid-area: pawimg;
+      }
+      .logo {
+        grid-area: logo;
+        width: 17vw;
+      }
+
+      .registerlogin {
+        grid-area: enter;
+      }
+
+      .login,.register {
+        background-color: #8b61c248;
+        /* color: rgba(255, 228, 196, 0.619); */
+        font-weight: bold;
+        padding: 30px;
+        border-radius: 20px;
+        border: none;
+        width: 120px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #8b61c2;
+        color: white;
+      }
+      .login_popup {
+        background-image: url(images/index_page/popup.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: fixed;
+        width: 60%;
+        height: 90%;
+        bottom: -1000px;
+        align-items: center;
+        display: flex;
+        transition: all 0.3s ease;
+      }
+      #show {
+        bottom: 0;
+      }
+      .login_content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 8%;
+        left: 15%;
+      }
+      
+    
+      .register_popup {
+        background-image: url(images/index_page/popup.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: fixed;
+        width: 60%;
+        height: 90%;
+        bottom: -1000px;
+        align-items: center;
+        display: flex;
+        transition: all 0.3s ease;
+      }
+      #show {
+        bottom: 0;
+      }
+      .register_content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 8%;
+        left: 15%;
+      }
+      .login_popup h1,
+      .register_popup h1 {
+        
+        font-family: PP Neue Machina Ultrabold;
+      }
+      #message-container {
+        position: fixed;
+        top: 1px;
+       margin-top: 1.5rem;
+        padding: 2rem;
+        border-radius: 4px;
+       width: 300px;
+        text-align: center;
+    }
+    .button{
+      background-color: #8b61c28e;
+      border-radius: 20px;
+      margin-top: 5px;
+      padding: 5px;
+      transition: all 0.3s ease;
+    }
+    input{
+      /* width: 100px; */
+      /* min-width: fit-content; */
+      font-size: 20px;
+      font-weight: bolder;
+      color: rgba(0, 0, 0, 0.712);
+      field-sizing: content;
+      background-color: beige;
+      padding: 5px;
+      border-radius: 10px;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    input:hover{
+      background-color: beige;
+      transform: scale(1.05);
+
+    }
+    .button:hover{
+      cursor: pointer;
+      transform: scale(1.09);
+    }
+
+    #blur{
+      filter: blur(4px);
+    }
+    
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="backgroundimg"></div>
+      <div class="content">
+        <h1 class="paw">paw</h1>
+        <h1 class="some">some</h1>
+        <img class="pawimg" src="images/index_page/paw.png" alt="" />
+        <img class="logo" src="images/index_page/" alt="" />
+        <div class="registerlogin">
+          <button class="btn login" onclick="">login</button>
+          <button class="btn register">register</button>
+        </div>
+      </div>
+
+      <div class="login_popup">
+        <!-- <img class="backgroundpopup" src="images/index_page/popup.png" alt="" /> -->
+        <form id="login-form">
+          <div class="login_content">
+            <h1>LOGIN</h1>
+            <!-- <label for="username">Username</label> -->
+            <input type="text" id="login-username" placeholder="username" />
+            <!-- <label for="email">E-mail</label>
+            <input type="email" id="login-email" /> -->
+            <!-- <label for="password">Password</label> -->
+            <input type="password" id="login-password" placeholder="password" />
+            <button class="button  lsubmit" type="button">submit</button>
+            <button class="button  lback" type="button" style="background-color: rgba(0, 0, 0, 0.63); color: azure;">back</button>
+          </div>
+        </form>
+      </div>
+
+
+
+      <div class="register_popup">
+        <!-- <img class="backgroundpopup" src="images/index_page/popup.png" alt="" /> -->
+        <form id="register-form">
+          <div class="register_content">
+            <h1 style="margin-bottom: 50px;">REGISTER</h1>
+            <!-- <label for="username">Username</label> -->
+            <input type="text" id="register-username" placeholder="username"/>
+            <!-- <label for="email">E-mail</label> -->
+            <input type="email" id="register-email" placeholder="email"/>
+            <!-- <label for="password">Password</label> -->
+            <input type="password" id="register-password" placeholder="password"/>
+
+            <button class="button rsubmit" type="button">submit</button>
+            <button class="button rback" type="button" style="background-color: rgba(0, 0, 0, 0.63); color: azure;">back</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="message-container"></div>
+    </div>
+    <script>
+      login();
+      function login() {
+        let loginbtn = document.querySelector(".login");
+        let registerbtn = document.querySelector(".register");
+
+        let loginpopup = document.querySelector(".login_popup");
+        let regpopup = document.querySelector(".register_popup");
+
+        let lbackbtn = document.querySelector(".lback");
+        let rbackbtn = document.querySelector(".rback");
+        
+       let blur1=document.querySelector(".content")
+        loginbtn.addEventListener("click", () => {
+          loginpopup.id = "show";
+
+           blur1.id='blur';
+        });
+        lbackbtn.addEventListener("click", () => {
+          loginpopup.id = " ";
+          blur1.id='';
+        });
+
+        registerbtn.addEventListener("click", () => {
+          regpopup.id = "show";
+
+          blur1.id='blur';
+        });
+        rbackbtn.addEventListener("click", () => {
+          regpopup.id = " ";
+          blur1.id='';
+        });
+      }
+    </script>
+    <script src="reg_login.js"></script>
+  </body>
+</html>

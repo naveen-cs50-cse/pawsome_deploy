@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Food</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            
+            scrollbar-width: none;
+        }
+        .container{
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ddc4a1;
+            text-align: center;
+            overflow: scroll;
+            scrollbar-width: none;
+                       
+
+        }
+        .petfoodtext{
+            margin-top: 8%;
+            margin-bottom: 5%;
+           font-size: 100px;
+           font-family: 'PP Neue Machina Ultrabold';
+           color:#8b61c2;
+        }
+        .label{
+            margin: 2%;
+           margin: 1%;
+           font-size: 50px;
+           font-family: 'PP Neue Machina Ultrabold';
+           color:#733519;
+        }
+        .dogfooditems,.catfooditems{
+           margin: 0px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+            
+        }
+        .dogfood ,.catfood{
+            padding: 20px 5px;
+             border: 2px solid;
+             margin: 20px;
+             width: 300px;
+             min-width: fit-content;
+             min-height: fit-content;
+             height: 250px;
+             justify-items: center;
+
+        }
+     
+        .dogfood img,.catfood img{
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            padding: 5px;
+        }
+        button{
+            padding: 5px;
+            border: 0px solid;
+            border-radius: 20px;
+            z-index: 999;
+            background-color:#b1803bbd;
+            width: fit-content;
+            padding: 10px;
+        }
+        button:hover{
+            transform: scale(1.03);
+            background-color: #9f6b22b1;
+            cursor: pointer;
+        }
+        .finaltext{
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            font-family: 'PP Neue Machina Ultrabold';
+            font-size: 60px;
+            align-content: center;
+            color: #733519;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <header class="main_header">
+            <ul>
+                <a href="our_services.html" class="pawsome_header"><li>pawsome</li></a>
+                <a href="pet_sitting.html"><li >sitting&#11167</li></a>
+                <a href="petgrooming.html"><li>grooming&#11167</li></a>
+                <a href="pet_accessories.html"><li>accessories&#11167</li></a>
+                <a href="pet_health.html"><li>health&#11167</li></a>
+                <a href="pet_food.html"><li>food&#11167</li></a>
+                <!-- <li><button class="login_btn_header">login</button></li> -->
+                <li><button class="profile_btn" style="padding: 20px; font-size: 20px; background-color: #73351971; border-radius: 20px; border: 0; cursor: pointer;" >NO USER</button></li>
+                <div class="cart-icon">🛒<span class="cart-count">0</span></div>
+            </ul>
+        </header>
+  <div id="profilePopup" class="profilepopup"
+     style="z-index: 999;
+            font-size: 20px;
+             position: fixed; 
+              left: 50%;
+               top: 8%;
+              color: black;
+               background:#f3dda4b7;
+               padding:20px; 
+              border-radius:15px; 
+              box-shadow:0 5px 20px rgba(0,0,0,0.4);
+               width:250px;
+               min-width: fit-content;">
+
+  <h3 style="color: #733519; font-weight: bold; font-size: 32px; font-family: 'PP Neue Machina Ultrabold'">User Profile</h3>
+  <p><b>Username:</b> <span id="p_username"></span></p>
+  <p><b>Email:</b> <span id="p_email"></span></p>
+  <p><b>UserID:</b> <span id="p_userid"></span></p>
+
+  <button id="logoutBtn"
+    style="cursor: pointer; background:red;color:white;padding:8px;border:none;border-radius:8px;margin-top:10px;">
+    Logout
+  </button>
+</div> 
+
+        <div class="petfoodtext">Pet food</div>
+        <div class="label dogfoodlabel">Dog food</div>
+
+        <div class="cartselect_section  dogfooditems" id="dogfooditems">
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/dryfood.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dog dry food</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/meat.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dog meat</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/wetfood.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dog wet food</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/dogmeat.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dog meat</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/dogtreats.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dogg treats</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/chewbone.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">chew bone</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/dogkibble.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">dog kibble</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item dogfood">
+                <img src="images/services/petfood/dogfood/biscuits.png" alt="">
+                <h3 class="cartselect_itemname dogfoodname">biscuits</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+        </div>
+
+        <div class="label catfoodlabel">Cat food</div>
+        <div class="cartselect_section catfooditems">
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/wetcat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">cat wet food</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/wetcat2.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">catt wet food</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/drycatfood.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">dry cat food</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/can1cat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">cat can</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/can2cat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">can catt</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/snackcat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">cat snack</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/fishcat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">fish</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+            <div class="cartselect_item catfood">
+                <img src="images/services/petfood/catfood/foodbagcat.png" alt="">
+                <h3 class="cartselect_itemname catfoodname">cat food bag</h3>
+                <h2 class="price">₹399</h2>
+                <button class="addtocart">add to cart</button>
+            </div>
+        </div>
+        <div class="finaltext">Fuel their fun with wholesome nutrition</div>
+
+
+        <div class="cartpop"></div>
+    </div>
+    <script>
+       
+       selectpet();
+        async function selectpet()
+        {
+           const pettype=document.cookie;
+            console.log(pettype);
+  
+           if(pettype=="dog")
+           {
+                document.querySelector(".catfooditems").style.display="none";
+                document.querySelector(".catfoodlabel").style.display="none";
+            // catfood.style.display="none";
+           }
+           else{
+            document.querySelector(".dogfooditems").style.display="none";
+                document.querySelector(".dogfoodlabel").style.display="none";
+           }
+        }
+    </script>
+
+    <script src="header.js"></script>
+    <script src="cart.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
