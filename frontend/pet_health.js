@@ -1,6 +1,6 @@
 
 
-const API_URL = 'http://127.0.0.1:5001/api/auth';
+const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
 
 async function submit_health()
     {
@@ -35,7 +35,7 @@ async function submit_health()
         showmsg.style.backgroundColor='#77d075f5';
 
         //for username email
-         const userRes = await fetch("http://127.0.0.1:5001/api/auth/me", {
+         const userRes = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
                 credentials: "include"
             });
 

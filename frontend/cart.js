@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:5001/api";
+const API_BASE = "https://pawsome-41bj.onrender.com/api";
 
 let user = null;
 let cartItems = [];

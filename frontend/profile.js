@@ -1,6 +1,6 @@
  async function loadUser() {
   try {
-    const res = await fetch("http://127.0.0.1:5001/api/auth/me", {
+    const res = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
       credentials: "include"
     });
 
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (profileBtn) {
     profileBtn.addEventListener("click", async () => {
-      const res = await fetch("http://127.0.0.1:5001/api/auth/me", {
+      const res = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
         credentials: "include"
       });
       if (res.ok) {
@@ -64,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   document.getElementById("logoutBtn").onclick = async () => {
-    await fetch("http://127.0.0.1:5001/api/auth/logout", {
+    await fetch("https://pawsome-41bj.onrender.com/api/auth/logout", {
       method: "POST",
       credentials: "include"
     });

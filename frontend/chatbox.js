@@ -51,7 +51,7 @@ async function askGemini() {
     addMessage("Pawsome AI", "⏳ thinking...");
 
     try {
-        const response = await fetch("http://127.0.0.1:5001/api/auth/askGemini", {
+        const response = await fetch("https://pawsome-41bj.onrender.com/api/auth/askGemini", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt })

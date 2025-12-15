@@ -2,7 +2,7 @@
 document.getElementById("payBtn").onclick = async function () {
 
     // 1️⃣ Create order in backend
-    const res = await fetch("http://127.0.0.1:5001/api/payment/create-order", {
+    const res = await fetch("https://pawsome-41bj.onrender.com/api/payment/create-order", {
         method: "POST",
         credentials: "include",
     });
@@ -20,7 +20,7 @@ document.getElementById("payBtn").onclick = async function () {
 
         "handler": async function (response) {
             // 3️⃣ VERIFY PAYMENT IN BACKEND
-            await fetch("http://127.0.0.1:5001/api/payment/verify", {
+            await fetch("https://pawsome-41bj.onrender.com/api/payment/verify", {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 credentials:"include",
@@ -28,7 +28,7 @@ document.getElementById("payBtn").onclick = async function () {
             });
 
             // 4️⃣ CLEAR CART (your backend already supports this)
-            await fetch("http://127.0.0.1:5001/api/cart/clear", {
+            await fetch("https://pawsome-41bj.onrender.com/api/cart/clear", {
                 method: "DELETE",
                 credentials: "include"
             });

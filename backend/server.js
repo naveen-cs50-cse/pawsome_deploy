@@ -29,7 +29,7 @@ app.use(express.json());
 app.use('/api/cart',cartRoutes)
 app.use('/models/cart',cartmongoose)
 
-mongoose.connect("mongodb://localhost:27017/pawsome")
+mongoose.connect("mongodb+srv://yourpawsomecare_db_user:ZSfjjowkvfvfl3GK@pawsome.tpunbs2.mongodb.net/?appName=PAWSOME")
 .then(()=>{
     console.log("connected to database");
 })

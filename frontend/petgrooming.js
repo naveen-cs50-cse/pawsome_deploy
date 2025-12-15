@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:5001/api/auth';
+const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
 
 
 async function bookingemail() {
@@ -24,7 +24,7 @@ async function bookingemail() {
     }
     // const dropaddr=document.querySelector(".store_addresss").innerText;
 
-     const userRes = await fetch("http://127.0.0.1:5001/api/auth/me", {
+     const userRes = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
             credentials: "include"   });
 
      let useremail = "";
