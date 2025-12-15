@@ -37,9 +37,17 @@ mongoose.connect(process.env.MONGO_URI || "mongodb+srv://yourpawsomecare_db_user
 
 app.use('/api/auth',authroutes)
 
-// app.use((req,res)=>{
-//     res.status(404).json({message:"route not found"});
-// })
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const collections = await mongoose.connection.db.listCollections().toArray();
+    res.json({ connected: true, collections });
+  } catch (err) {
+    res.status(500).json({ connected: false, error: err.message });
+  }
+});
+app.use((req,res)=>{
+    res.status(404).json({message:"route not found"});
+})
 
 // Global error handler
 app.use((err, req, res, next) => {
@@ -57,14 +65,6 @@ process.on('unhandledRejection', (reason, promise) => {
     process.exit(1);
 });
 
-app.get("/api/test-db", async (req, res) => {
-  try {
-    const collections = await mongoose.connection.db.listCollections().toArray();
-    res.json({ connected: true, collections });
-  } catch (err) {
-    res.status(500).json({ connected: false, error: err.message });
-  }
-});
 
 
 app.listen(port,(err)=>{
