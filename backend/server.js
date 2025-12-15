@@ -37,9 +37,9 @@ mongoose.connect(process.env.MONGO_URI || "mongodb+srv://yourpawsomecare_db_user
 
 app.use('/api/auth',authroutes)
 
-app.use((req,res)=>{
-    res.status(404).json({message:"route not found"});
-})
+// app.use((req,res)=>{
+//     res.status(404).json({message:"route not found"});
+// })
 
 // Global error handler
 app.use((err, req, res, next) => {
