@@ -57,6 +57,16 @@ process.on('unhandledRejection', (reason, promise) => {
     process.exit(1);
 });
 
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const collections = await mongoose.connection.db.listCollections().toArray();
+    res.json({ connected: true, collections });
+  } catch (err) {
+    res.status(500).json({ connected: false, error: err.message });
+  }
+});
+
+
 app.listen(port,(err)=>{
     if (err) {
         console.error('Failed to start server:', err);
