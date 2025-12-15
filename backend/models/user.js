@@ -16,6 +16,6 @@ const userschema = new mongoose.Schema({
         // minlength: 6
     }
 });
-const User = mongoose.model('customers', userschema);
+const User = mongoose.model('users', userschema);
 
 export default User;

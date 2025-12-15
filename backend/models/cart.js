@@ -9,7 +9,7 @@ const itemschema=new mongoose.Schema({
 },{_id:false});
 
 const cartschema=new mongoose.Schema({
-    userid:{type:mongoose.Schema.Types.ObjectId,ref:"customers",required:true,unique:true},
+    userid:{type:mongoose.Schema.Types.ObjectId,ref:"users",required:true,unique:true},
     items:[itemschema]
 },{timestamps:true});
 
