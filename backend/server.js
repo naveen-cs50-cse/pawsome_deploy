@@ -5,7 +5,6 @@ import authroutes from './routes/auth.js'
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import cartRoutes from './routes/cart.js';
-import cartmongoose from '../backend/models/cart.js'
 // import paymentRoutes from "./routes/payment.js";
 
 // import chatRoute from "./routes/chat.js";
@@ -13,7 +12,7 @@ import cartmongoose from '../backend/models/cart.js'
 
 dotenv.config();        
 const app=express();
-const port=5001; 
+const port = process.env.PORT || 5001; 
 app.use(cors({
     origin: true,
     credentials: true
@@ -27,9 +26,8 @@ app.use(express.json());
 // app.use("/api/chat", chatRoute);
 
 app.use('/api/cart',cartRoutes)
-app.use('/models/cart',cartmongoose)
 
-mongoose.connect("mongodb+srv://yourpawsomecare_db_user:ZSfjjowkvfvfl3GK@pawsome.tpunbs2.mongodb.net/?appName=PAWSOME")
+mongoose.connect(process.env.MONGO_URI || "mongodb+srv://yourpawsomecare_db_user:ZSfjjowkvfvfl3GK@pawsome.tpunbs2.mongodb.net/?appName=PAWSOME")
 .then(()=>{
     console.log("connected to database");
 })
@@ -43,6 +41,26 @@ app.use((req,res)=>{
     res.status(404).json({message:"route not found"});
 })
 
-app.listen(port,()=>{
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err);
+    res.status(500).json({ message: 'Internal server error' });
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    process.exit(1);
+});
+
+app.listen(port,(err)=>{
+    if (err) {
+        console.error('Failed to start server:', err);
+        process.exit(1);
+    }
     console.log(`server is running on port ${port}`);
 }) 
