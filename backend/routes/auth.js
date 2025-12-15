@@ -14,8 +14,10 @@ router.post("/register", async (req, res) => {
 
     const { username, email, password } = req.body;
 
-    if (!username || !password)
-      return res.status(400).json({ msg: "username and password required" });
+   if (!username || !email || !password) {
+  return res.status(400).json({ msg: "All fields required" });
+}
+
 
     let existing = await User.findOne({ username });
     if (existing)
@@ -59,12 +61,13 @@ router.post("/login", async (req, res) => {
     );
 
     // Send cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // true if using https
-      sameSite: "lax",
-      maxAge: 1 * 24 * 60 * 60 * 1000
-    });
+   res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,       // 🔥 REQUIRED for HTTPS
+  sameSite: "none",   // 🔥 REQUIRED for cross-site cookies
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
 
     return res.json({ msg: "Login successful" });

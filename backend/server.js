@@ -14,8 +14,8 @@ dotenv.config();
 const app=express();
 const port = process.env.PORT || 5001; 
 app.use(cors({
-    origin: ['https://heroic-bonbon-55082e.netlify.app', 'http://localhost:3000', 'http://127.0.0.1:5500'],
-    credentials: true
+  origin: 'https://heroic-bonbon-55082e.netlify.app',
+  credentials: true
 }));
 
 
@@ -27,13 +27,13 @@ app.use(express.json());
 
 app.use('/api/cart',cartRoutes)
 
-mongoose.connect(process.env.MONGO_URI || "mongodb+srv://yourpawsomecare_db_user:ZSfjjowkvfvfl3GK@pawsome.tpunbs2.mongodb.net/?appName=PAWSOME")
-.then(()=>{
-    console.log("connected to database");
+mongoose.connect(process.env.MONGO_URI || "mongodb+srv://yourpawsomecare_db_user:ZSfjjowkvfvfl3GK@pawsome.tpunbs2.mongodb.net/")
+.then(() => {
+  console.log("✅ MongoDB connected");
 })
-.catch((err)=>{
-    console.log(err);
-})
+.catch((err) => {
+  console.error("❌ MongoDB connection error:", err);
+});
 
 app.use('/api/auth',authroutes)
 
