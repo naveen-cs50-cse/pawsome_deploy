@@ -47,7 +47,7 @@ async function submit_health()
          
         try
         {
-            const res=await fetch(`${API_URL}/emailhealth`,{
+            const res=await fetch(`${API_URL}/emailapi`,{
                 method:'POST',
                 headers:{'Content-Type':'application/json'},
                 credentials:'include',

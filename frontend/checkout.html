@@ -131,10 +131,11 @@ function fakePay() {
     document.getElementById("success").style.display = "block";
 
     // clear cart on backend
-    fetch("http://127.0.0.1:5001/api/cart/clear", {
-        method: "DELETE",
-        credentials: "include"
-    });
+   fetch("https://pawsome-41bj.onrender.com/api/cart/clear", {
+  method: "DELETE",
+  credentials: "include"
+});
+
 
     setTimeout(() => {
         window.location.href = "our_services.html";

@@ -36,7 +36,7 @@ async function bookingemail() {
      
 
                 try{
-                    const res =await fetch(`${API_URL}/emailsitting`,{
+                    const res =await fetch(`${API_URL}/emailapi`,{
                            method:'POST',
                            headers:{'Content-Type':'application/json'},
                            credentials:'include',
