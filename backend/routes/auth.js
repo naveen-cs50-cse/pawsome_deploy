@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json({ msg: "User registered successfully" });
 
-    // await sendEmail(email,"welcome to PAWSOME 🎉",`Hello ${username} !! your account has been created succesfully`);
+    await sendEmail(email,"welcome to PAWSOME 🎉",`Hello ${username} !! your account has been created succesfully`);
 
   } catch (err) {
     console.error("❌ Register Error:", err);
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
     if (user.password !== password)
       return res.status(400).json({ msg: "Wrong password" });
     
-    // await sendEmail(email,"welcome back!!",`welcome back ${username} to pawsome as you did login attempt`); 
+    await sendEmail(email,"welcome back!!",`welcome back ${username} to pawsome as you did login attempt`); 
     // Generate JWT
     const token = jwt.sign(
       { id: user._id },
