@@ -17,10 +17,6 @@ const port = 5001;
 
 app.use(cors({
   origin: [
-    "http://127.0.0.1:5501",
-    "http://127.0.0.1:5500",
-    "http://localhost:3000",
-    // "https://yourpawsomeapp.netlify.app"
     "https://yourpawsomeapp.netlify.app",   // keep for prod
     "https://www.yourpawsomeapp.netlify.app"
   ],
