@@ -15,32 +15,19 @@ const app=express();
 const port = 5001; 
 
 
-const allowedOrigins = [
-  "http://127.0.0.1:5500",
-  "http://127.0.0.1:5501",
-  "http://127.0.0.1:5502",   // 🔥 THIS IS YOUR CURRENT ORIGIN
-  "http://localhost:3000",
-  "https://yourpawsomeapp.netlify.app"
-];
-
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (Postman, curl)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    return callback(new Error("Not allowed by CORS"));
-  },
+  origin: [
+    "http://127.0.0.1:5501",
+    "http://127.0.0.1:5500",
+    "http://localhost:3000",
+    // "https://yourpawsomeapp.netlify.app"
+    "https://yourpawsomeapp.netlify.app",   // keep for prod
+    "https://www.yourpawsomeapp.netlify.app"
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
-// 🔥 THIS IS CRITICAL FOR PREFLIGHT
-// app.options("*", cors());
 
 
 
