@@ -4,7 +4,7 @@ const transporter=nodemailer.createTransport({
     service:"gmail",
     auth:{
         user:"yourpawsomecare@gmail.com",
-        pass:"mlge ykee tjfw ynaa"
+        pass:"mlgeykeetjfwynaa"
     },
 });
 
