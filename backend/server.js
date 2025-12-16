@@ -12,24 +12,35 @@ import cartRoutes from './routes/cart.js';
 
 dotenv.config();        
 const app=express();
-const port = process.env.PORT || 5001; 
-<<<<<<< HEAD
-=======
-import cors from "cors";
->>>>>>> 642cb2c4d2d46f5d7b3e6dc8da30b7297cf250c8
+const port = 5001; 
+
+
+const allowedOrigins = [
+  "http://127.0.0.1:5500",
+  "http://127.0.0.1:5501",
+  "http://127.0.0.1:5502",   // 🔥 THIS IS YOUR CURRENT ORIGIN
+  "http://localhost:3000",
+  "https://yourpawsomeapp.netlify.app"
+];
 
 app.use(cors({
-  origin: [
-    "http://127.0.0.1:5501",
-    "http://127.0.0.1:5500",
-    "http://localhost:3000",
-    "https://yourpawsomeapp.netlify.app",   // keep for prod
-    "https://www.yourpawsomeapp.netlify.app"
-  ],
+  origin: function (origin, callback) {
+    // allow requests with no origin (Postman, curl)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+// 🔥 THIS IS CRITICAL FOR PREFLIGHT
+// app.options("*", cors());
 
 
 
