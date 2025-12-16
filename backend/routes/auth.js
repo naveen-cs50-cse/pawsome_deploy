@@ -43,11 +43,6 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
-    if(username=="test"&&password=="test")
-    {
-          pass;
-    }
-    else{
 
       const user = await User.findOne({ username });
       
@@ -59,23 +54,20 @@ router.post("/login", async (req, res) => {
         return res.status(400).json({ msg: "Wrong password" });
       
       await sendEmail(email,"welcome back!!",`welcome back ${username} to pawsome as you did login attempt`); 
-    }
-    // Generate JWT
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    // Send cookie
-   res.cookie("token", token, {
+      // Generate JWT
+      const token = jwt.sign(
+        { id: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: "7d" }
+      );
+      
+      // Send cookie
+      res.cookie("token", token, {
   httpOnly: true,
   secure: true,       // 🔥 REQUIRED for HTTPS
   sameSite: "none",   // 🔥 REQUIRED for cross-site cookies
   maxAge: 7 * 24 * 60 * 60 * 1000
 });
-
-
 
     return res.json({ msg: "Login successful" });
 

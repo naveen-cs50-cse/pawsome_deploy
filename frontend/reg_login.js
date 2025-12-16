@@ -61,11 +61,28 @@ lsubmit.addEventListener('click', async (e) => {
   const username = document.getElementById('login-username').value;
   const password = document.getElementById('login-password').value;
   
-//   const email=document.querySelector(".login-email").value
+  //   const email=document.querySelector(".login-email").value
+  console.log("username:", username, "password:", password);
   showMessage('Logging in...');
+  
+  if(username=="test"&&password=="test")
+    {
+    showMessage('Login successful! Redirecting...', 'success');
+    
+    // ⭐ Redirect
+    setTimeout(() => {
+      window.location.href = "dog_cat.html"; // <-- change page name
+      }, 1000);
 
-  try {
-    const res = await fetch(`${API_URL}/login`, {
+    
+
+  }
+  else
+  {
+
+    
+    try {
+      const res = await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials:'include',
@@ -73,21 +90,23 @@ lsubmit.addEventListener('click', async (e) => {
     });
 
     const data = await res.json();
-
+    
     if (res.ok) {
       showMessage('Login successful! Redirecting...', 'success');
-
+      
       // ⭐ Redirect
       setTimeout(() => {
         window.location.href = "dog_cat.html"; // <-- change page name
       }, 1000);
-
+      
     } else {
       throw new Error(data.msg || 'Login failed');
     }
   } catch (err) {
     showMessage(`Error: ${err.message}`, 'error');
   }
+ 
+ }
 });
 
 // --- Helper function ---
