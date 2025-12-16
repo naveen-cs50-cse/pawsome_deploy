@@ -1,4 +1,4 @@
-const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
+const API_URL = 'https://pawsomecareapp-production.up.railway.app/api/auth';
 
 
 async function bookingemail() {
@@ -24,7 +24,7 @@ async function bookingemail() {
     }
     // const dropaddr=document.querySelector(".store_addresss").innerText;
 
-     const userRes = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
+     const userRes = await fetch(`${API_URL}/me`, {
             credentials: "include"   });
 
      let useremail = "";

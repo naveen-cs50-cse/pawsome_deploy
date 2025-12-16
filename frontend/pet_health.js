@@ -1,6 +1,6 @@
 
 
-const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
+const API_URL = 'https://pawsomecareapp-production.up.railway.app/api/auth';
 
 async function submit_health()
     {
@@ -35,7 +35,7 @@ async function submit_health()
         showmsg.style.backgroundColor='#77d075f5';
 
         //for username email
-         const userRes = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
+         const userRes = await fetch(`${API_URL}/me`, {
                 credentials: "include"
             });
 

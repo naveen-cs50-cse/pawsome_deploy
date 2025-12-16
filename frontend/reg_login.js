@@ -1,5 +1,5 @@
 // Set the backend API URL
-const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
+const API_URL = 'https://pawsomecareapp-production.up.railway.app/api/auth';
 
 const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');

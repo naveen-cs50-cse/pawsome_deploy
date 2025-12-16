@@ -1,4 +1,4 @@
-const API_BASE = "https://pawsome-41bj.onrender.com/api";
+const API_BASE = "https://pawsomecareapp-production.up.railway.app/api";
 
 let user = null;
 let cartItems = [];

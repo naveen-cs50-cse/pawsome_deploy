@@ -1,4 +1,4 @@
-    const API_URL = 'https://pawsome-41bj.onrender.com/api/auth';
+    const API_URL = 'https://pawsomecareapp-production.up.railway.app/api/auth';
 
 
     
@@ -18,7 +18,7 @@
         console.log("booking attempt.....")
        
            // FETCH USER FIRST
-            const userRes = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
+            const userRes = await fetch(`${API_URL}/me`, {
                                  credentials: "include"
                              });
 

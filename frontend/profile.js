@@ -1,6 +1,8 @@
- async function loadUser() {
+let API_URL='https://pawsomecareapp-production.up.railway.app/'
+
+async function loadUser() {
   try {
-    const res = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
+    const res = await fetch(`${API_URL}api/auth/me`, {
       credentials: "include"
     });
 
@@ -40,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (profileBtn) {
     profileBtn.addEventListener("click", async () => {
-      const res = await fetch("https://pawsome-41bj.onrender.com/api/auth/me", {
+      const res = await fetch(`${API_URL}api/auth/me`, {
         credentials: "include"
       });
       if (res.ok) {
@@ -64,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   document.getElementById("logoutBtn").onclick = async () => {
-    await fetch("https://pawsome-41bj.onrender.com/api/auth/logout", {
+    await fetch(`${API_URL}api/auth/logout`, {
       method: "POST",
       credentials: "include"
     });

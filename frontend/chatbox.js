@@ -1,6 +1,6 @@
 // ---------------- GEMINI AI CONFIG ----------------
 
-
+let API_BASE='https://pawsomecareapp-production.up.railway.app/'
 // ---------------- UI ELEMENTS ----------------
 const chatIcon = document.querySelector(".chat-icon");
 const chatbox = document.querySelector(".chatbox");
@@ -51,7 +51,7 @@ async function askGemini() {
     addMessage("Pawsome AI", "⏳ thinking...");
 
     try {
-        const response = await fetch("https://pawsome-41bj.onrender.com/api/auth/askGemini", {
+        const response = await fetch(`${API_BASE}api/auth/askGemini`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt })

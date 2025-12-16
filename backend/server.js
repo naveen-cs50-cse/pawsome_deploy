@@ -13,14 +13,18 @@ import cartRoutes from './routes/cart.js';
 dotenv.config();        
 const app=express();
 const port = process.env.PORT || 5001; 
+
 app.use(cors({
   origin: [
-    "https://yourpawsomeapp.netlify.app",
-    "https://heroic-bonbon-55082e.netlify.app",
+    "http://127.0.0.1:5501",
+    "http://127.0.0.1:5500",
     "http://localhost:3000",
-    "http://127.0.0.1:5500"
+    "https://yourpawsomeapp.netlify.app",   // keep for prod
+    "https://www.yourpawsomeapp.netlify.app"
   ],
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 
