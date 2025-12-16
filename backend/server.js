@@ -13,6 +13,10 @@ import cartRoutes from './routes/cart.js';
 dotenv.config();        
 const app=express();
 const port = process.env.PORT || 5001; 
+<<<<<<< HEAD
+=======
+import cors from "cors";
+>>>>>>> 642cb2c4d2d46f5d7b3e6dc8da30b7297cf250c8
 
 app.use(cors({
   origin: [
