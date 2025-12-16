@@ -18,7 +18,8 @@ const port = 5001;
 app.use(cors({
   origin: [
     "https://yourpawsomeapp.netlify.app",   // keep for prod
-    "https://www.yourpawsomeapp.netlify.app"
+    "https://www.yourpawsomeapp.netlify.app",
+    "http://127.0.0.1:5502",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

@@ -131,7 +131,7 @@ function fakePay() {
     document.getElementById("success").style.display = "block";
 
     // clear cart on backend
-   fetch("https://pawsome-41bj.onrender.com/api/cart/clear", {
+   fetch("https://pawsomecareapp-production.up.railway.app/api/cart/clear", {
   method: "DELETE",
   credentials: "include"
 });
@@ -147,7 +147,7 @@ function fakePay() {
 <script src="profile.js"></script>
 
 <script>
-const API_BASE = "http://127.0.0.1:5001/api";
+const API_BASE = "https://pawsomecareapp-production.up.railway.app/api";
 
 // Load cart items
 async function loadCheckout() {
