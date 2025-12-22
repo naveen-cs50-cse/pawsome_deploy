@@ -52,7 +52,7 @@ async function askGroq() {
     addMessage("Pawsome AI", "⏳ thinking...");
 
     try {
-        const response = await fetch(`${API_BASE}api/auth/askGroq`, {
+        const response = await fetch(`${CHAT_API_BASE}api/auth/askGroq`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt })
@@ -63,7 +63,7 @@ async function askGroq() {
 
         // Parse Groq response format
         const aiText =
-            data?.choices[0]?.message?.content ||
+            data?. choices?.[0]?.message?. content ||
             "Sorry, I couldn't understand.";
 
         addMessage("Pawsome AI", aiText);
