@@ -166,7 +166,7 @@ router.post("/askGroq", async (req, res) => {
         console.log("Groq API Response:", data);
 
         res.json({
-              reply: data.choices?.[0]?.message?.content || "No response"
+              reply: data.choices[0].message?.content || "No response"
            });
 
 
