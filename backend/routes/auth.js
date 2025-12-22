@@ -146,7 +146,7 @@ router.post("/askGroq", async (req, res) => {
                 method: "POST",
                 headers:  { 
                     "Content-Type":  "application/json",
-                    "Authorization": `Bearer ${process.env.GROQ_API_KEY || geky}`
+                    "Authorization": `Bearer ${process.env.GROQ_API_KEY || gkey}`
                 },
                 body: JSON.stringify({
                     model: "mixtral-8x7b-32768",
@@ -165,7 +165,10 @@ router.post("/askGroq", async (req, res) => {
         const data = await response.json();
         console.log("Groq API Response:", data);
 
-        res.json(data);
+        res.json({
+              reply: data.choices?.[0]?.message?.content || "No response"
+           });
+
 
     } catch (err) {
         console.error("Groq Error:", err);

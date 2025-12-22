@@ -57,13 +57,18 @@ async function askGroq() {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt })
 });
+       
+
+    if (!response.ok) {
+              throw new Error("AI request failed");
+          }
+
 
         const data = await response.json();
         chatMessages. lastChild.remove();
 
         // Parse Groq response format
-        const aiText =
-            data?. choices?.[0]?.message?. content ||
+       const aiText = data.reply ||
             "Sorry, I couldn't understand.";
 
         addMessage("Pawsome AI", aiText);
