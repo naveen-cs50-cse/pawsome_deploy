@@ -1,6 +1,6 @@
-// ---------------- GEMINI AI CONFIG ----------------
+// ---------------- GROQ AI CONFIG ----------------
 
-let API_BASE='https://pawsomecareapp-production.up.railway.app/'
+const CHAT_API_BASE='https://pawsomecareapp-production.up.railway.app/'
 // ---------------- UI ELEMENTS ----------------
 const chatIcon = document.querySelector(".chat-icon");
 const chatbox = document.querySelector(".chatbox");
@@ -20,10 +20,10 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// ---------------- SEND MESSAGE ----------------
-btn.addEventListener("click", askGemini);
+// Updated event listener
+btn.addEventListener("click", askGroq);
 input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") askGemini();
+    if (e.key === "Enter") askGroq();
 });
 
 function addMessage(sender, text) {
@@ -42,8 +42,9 @@ function addMessage(sender, text) {
 
 
 // ---------------- GEMINI AI REQUEST ----------------
-async function askGemini() {
-    const prompt = input.value.trim();
+// Updated the function name and API call
+async function askGroq() {
+    const prompt = input. value.trim();
     if (!prompt) return;
 
     addMessage("You", prompt);
@@ -51,28 +52,29 @@ async function askGemini() {
     addMessage("Pawsome AI", "⏳ thinking...");
 
     try {
-        const response = await fetch(`${API_BASE}api/auth/askGemini`, {
+        const response = await fetch(`${API_BASE}api/auth/askGroq`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt })
 });
 
-
         const data = await response.json();
-        chatMessages.lastChild.remove();
+        chatMessages. lastChild.remove();
 
+        // Parse Groq response format
         const aiText =
-            data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-            "Sorry, I couldn’t understand.";
+            data?.choices[0]?.message?.content ||
+            "Sorry, I couldn't understand.";
 
         addMessage("Pawsome AI", aiText);
 
     } catch (err) {
-        chatMessages.lastChild.remove();
+        chatMessages.lastChild. remove();
         addMessage("Pawsome AI", "⚠️ Server error.");
         console.error(err);
     }
 }
+
 
 
 function createPawParticles() {

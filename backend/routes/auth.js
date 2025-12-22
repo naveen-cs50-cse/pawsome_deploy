@@ -2,8 +2,12 @@ import { Router } from "express";
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import sendEmail from "../utilities/emailservice.js";
-// import fetch from "node-fetch";
+import { Groq } from 'groq-sdk';
 
+const groq = new Groq({
+	apiKey:'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'
+});
+const gkey='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';
 
 const router = Router();
 
@@ -100,35 +104,71 @@ router.get("/me", async (req, res) => {
 });
 
 
-router.post("/askGemini", async (req, res) => {
+// router.post("/askGroq", async (req, res) => {
+//     try {
+//         const prompt = req.body.prompt;
+
+//         const response = await groq.chat.completions.create({
+//                "messages": [
+//                  {
+//                    "role": "user",
+//                    "content": prompt
+//                  }
+//                ],
+//                "model": "openai/gpt-oss-20b",
+//                "temperature": 1,
+//                "max_completion_tokens": 8192,
+//                "top_p": 1,
+//                "stream": false,
+//                "reasoning_effort": "medium",
+//                "stop": null,
+//                "tools": []
+//              });
+
+//         const data = { mess: { text: response.choices[0].message.content } };
+//         console.log("Groq API Response:", data);
+
+//         res.json(data);
+
+//     } catch (err) {
+//         console.error("Groq Error:", err);
+//         res.status(500).json({ error: "Server error" });
+//     }
+// });
+// Replaced the /askGemini endpoint with /askGroq
+router.post("/askGroq", async (req, res) => {
     try {
         const prompt = req.body.prompt;
 
         const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + process.env.GOOGLE_KEY,
+            "https://api.groq.com/openai/v1/chat/completions",
             {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers:  { 
+                    "Content-Type":  "application/json",
+                    "Authorization": `Bearer ${process.env.GROQ_API_KEY || geky}`
+                },
                 body: JSON.stringify({
-                    contents: [
+                    model: "mixtral-8x7b-32768",
+                    messages:  [
                         {
                             role: "user",
-                            parts: [
-                                { text: prompt }
-                            ]
+                            content: prompt
                         }
-                    ]
+                    ],
+                    temperature: 0.7,
+                    max_tokens:  1024
                 })
             }
         );
 
         const data = await response.json();
-        console.log("Gemini API Response:", data);
+        console.log("Groq API Response:", data);
 
         res.json(data);
 
     } catch (err) {
-        console.error("Gemini Error:", err);
+        console.error("Groq Error:", err);
         res.status(500).json({ error: "Server error" });
     }
 });
