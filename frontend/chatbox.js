@@ -68,10 +68,12 @@ async function askGroq() {
         chatMessages. lastChild.remove();
 
         // Parse Groq response format
-       const aiText = data.reply ||
-            "Sorry, I couldn't understand.";
+       if (data.error) {
+             addMessage("Pawsome AI", "⚠️ " + data.error);
+                return;
+         }
 
-        addMessage("Pawsome AI", aiText);
+addMessage("Pawsome AI", data.reply);
 
     } catch (err) {
         chatMessages.lastChild. remove();

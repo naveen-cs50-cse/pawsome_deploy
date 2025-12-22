@@ -165,9 +165,16 @@ router.post("/askGroq", async (req, res) => {
         const data = await response.json();
         console.log("Groq API Response:", data);
 
-        res.json({
-              reply: data.choices[0].message?.content || "No response"
-           });
+      if (!data.choices) {
+               return res.status(400).json({
+                 error: data.error?.message || "Groq error"
+               });
+             }
+
+             res.json({
+               reply: data.choices[0].message.content
+             });
+
 
 
     } catch (err) {
