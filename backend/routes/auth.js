@@ -146,7 +146,7 @@ router.post("/askGroq", async (req, res) => {
                 method: "POST",
                 headers:  { 
                     "Content-Type":  "application/json",
-                    "Authorization": `Bearer ${process.env.GROQ_API_KEY || gkeyy}`
+                    "Authorization": `Bearer ${process.env.GROQ_API_KEY || gkey}`
                 },
                 body: JSON.stringify({
                     model: "mixtral-8x7b-32768",
